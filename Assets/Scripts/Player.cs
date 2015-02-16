@@ -8,9 +8,15 @@ namespace Assets.Scripts
 
         void Update()
         {
-            var frameSpeed = Speed*Time.deltaTime;
+            var frameSpeed = Speed * Time.deltaTime;
 
-            transform.Translate(Input.GetAxisRaw("Horizontal") * frameSpeed, Input.GetAxisRaw("Vertical") * frameSpeed, 0);      
+            transform.Translate(Input.GetAxisRaw("Horizontal") * frameSpeed, Input.GetAxisRaw("Vertical") * frameSpeed, 0);
+
+            if (Input.GetMouseButtonDown(0))
+            {
+                var gun = GetComponent<Gun>();
+                if (gun != null) gun.Fire();
+            }
         }
     }
 }
