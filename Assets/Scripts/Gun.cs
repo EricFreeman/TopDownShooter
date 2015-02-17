@@ -17,6 +17,7 @@ namespace Assets.Scripts
             {
                 var bullet = (GameObject)Instantiate(BulletGameObject);
                 bullet.transform.position = transform.position;
+                bullet.transform.rotation = transform.GetComponentInChildren<SpriteRenderer>().transform.rotation;
             }
         }
 
