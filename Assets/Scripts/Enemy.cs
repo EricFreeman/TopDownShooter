@@ -1,15 +1,20 @@
 ﻿using UnityEngine;
-using System.Collections;
 
-public class Enemy : MonoBehaviour {
+namespace Assets.Scripts
+{
+    public class Enemy : MonoBehaviour
+    {
+        public Player Player;
+        public float Speed = 3f;
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+        void Update()
+        {
+            if (Player == null)
+                Player =  FindObjectOfType<Player>();
+            else
+            {
+                transform.position = Vector3.MoveTowards(transform.position, Player.transform.position, Speed * Time.deltaTime);
+            }
+        }
+    }
 }
