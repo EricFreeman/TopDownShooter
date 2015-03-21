@@ -19,7 +19,7 @@ namespace Assets.Scripts
             if (CurrentSpawnDelay <= 0)
             {
                 CurrentSpawnDelay += SpawnDelay;
-                var newEnemy = (GameObject) Instantiate(Enemy);
+                var newEnemy = Instantiate(Enemy);
             }
         }
     }

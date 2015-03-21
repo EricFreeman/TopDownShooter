@@ -12,7 +12,7 @@ namespace Assets.Scripts
 
             transform.Translate(Input.GetAxisRaw("Horizontal") * frameSpeed, Input.GetAxisRaw("Vertical") * frameSpeed, 0);
 
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButton(0))
             {
                 var gun = GetComponent<Gun>();
                 if (gun != null) gun.Fire();

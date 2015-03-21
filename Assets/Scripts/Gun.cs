@@ -15,7 +15,7 @@ namespace Assets.Scripts
         {
             if (CanFire())
             {
-                var bullet = (GameObject)Instantiate(BulletGameObject);
+                var bullet = Instantiate(BulletGameObject);
                 bullet.transform.position = transform.position;
                 bullet.transform.rotation = transform.GetComponentInChildren<SpriteRenderer>().transform.rotation;
             }
