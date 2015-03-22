@@ -6,9 +6,14 @@ namespace Assets.Scripts
     {
         public Player Player;
         public float Speed = 3f;
+        public int Health = 5;
+
+        private bool _isDead;
 
         void Update()
         {
+            if (_isDead) return;
+
             if (Player == null)
             {
 
@@ -23,7 +28,16 @@ namespace Assets.Scripts
 
         void OnTriggerEnter2D(Collider2D col)
         {
-            Debug.Log(col.name);
+            if (col.GetComponent<Bullet>() != null)
+            {
+                if (Health-- <= 0) Die();
+            }
+        }
+
+        private void Die()
+        {
+            _isDead = true;
+            //Spawn blood
         }
     }
 }
