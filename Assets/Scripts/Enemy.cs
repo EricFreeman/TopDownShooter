@@ -30,7 +30,11 @@ namespace Assets.Scripts
         {
             if (col.GetComponent<Bullet>() != null)
             {
-                if (Health-- <= 0) Die();
+                if (Health > 0) Destroy(col.gameObject);
+
+                Health--;
+                
+                if (Health <= 0) Die();
             }
         }
 
