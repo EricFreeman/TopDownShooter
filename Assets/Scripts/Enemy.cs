@@ -21,8 +21,8 @@ namespace Assets.Scripts
             }
             else
             {
-                transform.position = Vector3.MoveTowards(transform.position, Player.transform.position,
-                    Speed*Time.deltaTime);
+                transform.position = Vector3.MoveTowards(transform.position, Player.transform.position, Speed * Time.deltaTime);
+                GetComponent<LookAtPoint>().TargetPoint = Player.transform.position;
             }
         }
 
