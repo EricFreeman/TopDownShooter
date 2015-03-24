@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.Util;
+using UnityEngine;
 
 namespace Assets.Scripts
 {
@@ -20,7 +21,24 @@ namespace Assets.Scripts
             {
                 CurrentSpawnDelay += SpawnDelay;
                 var newEnemy = Instantiate(Enemy);
+                newEnemy.transform.Translate(GetOffscreenPosition());
             }
+        }
+
+        private Vector3 GetOffscreenPosition()
+        {
+            var spawnSide = Random.Range(0, 4);
+            const float width = 2f;
+            const float height = 1.2f;
+
+            Vector3 offset;
+
+            if (spawnSide == 0) offset = new Vector3(-width, Random.Range(-height, height), 0);
+            else if (spawnSide == 1) offset = new Vector3(Random.Range(-width, width), height, 0);
+            else if (spawnSide == 2) offset = new Vector3(width, Random.Range(-height, height), 0);
+            else offset = new Vector3(Random.Range(-width, width), -height, 0);
+
+            return Camera.main.transform.position.ToXY() + offset;
         }
     }
 }
