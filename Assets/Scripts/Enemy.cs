@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.Messages;
+using UnityEngine;
+using UnityEventAggregator;
 
 namespace Assets.Scripts
 {
@@ -30,7 +32,11 @@ namespace Assets.Scripts
         {
             if (col.GetComponent<Bullet>() != null)
             {
-                if (Health > 0) Destroy(col.gameObject);
+                if (Health > 0)
+                {
+                    Destroy(col.gameObject);
+                    EventAggregator.SendMessage(new SpawnBloodMessage { Position = transform.position });
+                }
 
                 Health--;
                 
@@ -41,7 +47,6 @@ namespace Assets.Scripts
         private void Die()
         {
             _isDead = true;
-            //Spawn blood
         }
     }
 }
