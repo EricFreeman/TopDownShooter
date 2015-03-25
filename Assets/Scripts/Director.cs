@@ -28,8 +28,8 @@ namespace Assets.Scripts
         private Vector3 GetOffscreenPosition()
         {
             var spawnSide = Random.Range(0, 4);
-            const float width = 2f;
-            const float height = 1.2f;
+            const float width = 19f;
+            const float height = 11f;
 
             Vector3 offset;
 

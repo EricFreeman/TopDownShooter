@@ -5,6 +5,7 @@ namespace Assets.Scripts
     public class Gun : MonoBehaviour
     {
         public GameObject BulletGameObject;
+        public GameObject TipGameObject;
 
         void Update()
         {
@@ -16,7 +17,7 @@ namespace Assets.Scripts
             if (CanFire())
             {
                 var bullet = Instantiate(BulletGameObject);
-                bullet.transform.position = transform.position;
+                bullet.transform.position = TipGameObject.transform.position;
                 bullet.transform.rotation = transform.GetComponentInChildren<SpriteRenderer>().transform.rotation;
             }
         }
