@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Messages;
+using Assets.Scripts.Util;
 using UnityEngine;
 using UnityEventAggregator;
 
@@ -47,6 +48,7 @@ namespace Assets.Scripts
         private void Die()
         {
             _isDead = true;
+            GetComponentInChildren<SpriteRenderer>().sortingOrder = Constants.DeadEnemyLayer;
         }
     }
 }
