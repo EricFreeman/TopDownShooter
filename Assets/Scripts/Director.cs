@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Util;
+using Dungeon.Generator;
 using UnityEngine;
 
 namespace Assets.Scripts
@@ -9,9 +10,13 @@ namespace Assets.Scripts
         public float SpawnDelay = 5;
         public float CurrentSpawnDelay;
 
+        public GameObject Tile;
+        public float TileSize = 8;
+
         void Start()
         {
             CurrentSpawnDelay = SpawnDelay;
+            CreateLevel();
         }
 
         void Update()
@@ -22,6 +27,23 @@ namespace Assets.Scripts
                 CurrentSpawnDelay += SpawnDelay;
                 var newEnemy = Instantiate(Enemy);
                 newEnemy.transform.Translate(GetOffscreenPosition());
+            }
+        }
+
+        private void CreateLevel()
+        {
+            var map = Generator.Generate(MapSize.Small, 1);
+
+            for (var y = 0; y < map.Height; y++)
+            {
+                for (var x = 0; x < map.Width; x++)
+                {
+                    if (map[x, y].MaterialType == MaterialType.Floor)
+                    {
+                        var tile = Instantiate(Tile);
+                        tile.transform.position = new Vector3(x, y) * TileSize;
+                    }
+                }
             }
         }
 
