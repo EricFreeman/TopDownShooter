@@ -11,6 +11,7 @@ namespace Assets.Scripts
         public float CurrentSpawnDelay;
 
         public GameObject Tile;
+        public GameObject Wall;
         public float TileSize = 8;
 
         void Start()
@@ -42,6 +43,11 @@ namespace Assets.Scripts
                     {
                         var tile = Instantiate(Tile);
                         tile.transform.position = new Vector3(x, y) * TileSize;
+                    }
+                    else if (map[x, y].MaterialType == MaterialType.Wall)
+                    {
+                        var wall = Instantiate(Wall);
+                        wall.transform.position = new Vector3(x, y) * TileSize;
                     }
                 }
             }
