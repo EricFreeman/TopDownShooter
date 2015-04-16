@@ -1,6 +1,7 @@
 ﻿using Assets.Scripts.Util;
 using Dungeon.Generator;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Assets.Scripts
 {
@@ -33,21 +34,32 @@ namespace Assets.Scripts
 
         private void CreateLevel()
         {
-            var map = Generator.Generate(MapSize.Small, 1);
+            var map = Generator.Generate(MapSize.Small, (uint)Random.Range(1, 255));
 
             for (var y = 0; y < map.Height; y++)
             {
                 for (var x = 0; x < map.Width; x++)
                 {
-                    if (map[x, y].MaterialType == MaterialType.Floor)
+                    var mapTile = map[x, y];
+                    var tilePosition = new Vector3(x, y) * TileSize;
+
+                    // tile type
+                    if (mapTile.MaterialType == MaterialType.Floor)
                     {
                         var tile = Instantiate(Tile);
-                        tile.transform.position = new Vector3(x, y) * TileSize;
+                        tile.transform.position = tilePosition;
                     }
-                    else if (map[x, y].MaterialType == MaterialType.Wall)
+                    else if (mapTile.MaterialType == MaterialType.Wall)
                     {
                         var wall = Instantiate(Wall);
-                        wall.transform.position = new Vector3(x, y) * TileSize;
+                        wall.transform.position = tilePosition;
+                    }
+
+                    // tile attributes
+                    if (mapTile.Attributes.HasFlag(AttributeType.Entry))
+                    {
+                        var player = FindObjectOfType<Player>();
+                        player.transform.position = tilePosition;
                     }
                 }
             }
