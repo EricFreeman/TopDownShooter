@@ -13,6 +13,7 @@ namespace Assets.Scripts
 
         public GameObject Tile;
         public GameObject Wall;
+        public GameObject Exit;
         public float TileSize = 8;
 
         void Start()
@@ -60,6 +61,11 @@ namespace Assets.Scripts
                     {
                         var player = FindObjectOfType<Player>();
                         player.transform.position = tilePosition;
+                    }
+                    else if (mapTile.Attributes.HasFlag(AttributeType.Exit))
+                    {
+                        var exit = Instantiate(Exit);
+                        exit.transform.position = tilePosition;
                     }
                 }
             }
