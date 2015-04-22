@@ -9,7 +9,7 @@ namespace Assets.Scripts.Particles
 
         void Start()
         {
-            var amount = Random.Range(1, 5);
+            var amount = Random.Range(7, 15);
 
             for (var i = 0; i < amount; i++)
             {

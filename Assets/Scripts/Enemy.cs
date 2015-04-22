@@ -36,7 +36,9 @@ namespace Assets.Scripts
                 if (Health > 0)
                 {
                     Destroy(col.gameObject);
+                    Destroy(gameObject);
                     EventAggregator.SendMessage(new SpawnBloodMessage { Position = transform.position });
+                    EventAggregator.SendMessage(new SpawnGibsMessage { Count = 5, Position = transform.position });
                 }
 
                 Health--;

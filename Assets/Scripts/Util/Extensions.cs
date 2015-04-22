@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Assets.Scripts.Util
@@ -29,6 +30,12 @@ namespace Assets.Scripts.Util
             ulong num = Convert.ToUInt64(value);
             return ((Convert.ToUInt64(variable) & num) == num);
 
+        }
+
+        public static T Random<T>(this List<T> list)
+        {
+            var index = UnityEngine.Random.Range(0, list.Count);
+            return list[index];
         }
     }
 }
