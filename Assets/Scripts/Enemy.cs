@@ -1,5 +1,4 @@
 ﻿using Assets.Scripts.Messages;
-using Assets.Scripts.Util;
 using UnityEngine;
 using UnityEventAggregator;
 
@@ -11,46 +10,24 @@ namespace Assets.Scripts
         public float Speed = 3f;
         public int Health = 5;
 
-        private bool _isDead;
-
-        void Update()
-        {
-            if (_isDead) return;
-
-            if (Player == null)
-            {
-
-                Player = FindObjectOfType<Player>();
-            }
-            else
-            {
-                transform.position = Vector3.MoveTowards(transform.position, Player.transform.position, Speed * Time.deltaTime);
-                GetComponent<LookAtPoint>().TargetPoint = Player.transform.position;
-            }
-        }
-
         void OnTriggerEnter2D(Collider2D col)
         {
             if (col.GetComponent<Bullet>() != null)
             {
+                Health--;
+                Destroy(col.gameObject);
+
                 if (Health > 0)
                 {
-                    Destroy(col.gameObject);
-                    Destroy(gameObject);
+                    EventAggregator.SendMessage(new SpawnGibsMessage { Count = 1, Position = transform.position });
                     EventAggregator.SendMessage(new SpawnBloodMessage { Position = transform.position });
+                }
+                else
+                {
+                    Destroy(gameObject);
                     EventAggregator.SendMessage(new SpawnGibsMessage { Count = 5, Position = transform.position });
                 }
-
-                Health--;
-                
-                if (Health <= 0) Die();
             }
-        }
-
-        private void Die()
-        {
-            _isDead = true;
-            GetComponentInChildren<SpriteRenderer>().sortingOrder = Constants.DeadEnemyLayer;
         }
     }
 }

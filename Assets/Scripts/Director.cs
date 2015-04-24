@@ -14,6 +14,7 @@ namespace Assets.Scripts
         public GameObject Tile;
         public GameObject Wall;
         public GameObject Exit;
+        public GameObject Mob;
         public float TileSize = 8;
 
         void Start()
@@ -24,13 +25,13 @@ namespace Assets.Scripts
 
         void Update()
         {
-            CurrentSpawnDelay -= Time.deltaTime;
-            if (CurrentSpawnDelay <= 0)
-            {
-                CurrentSpawnDelay += SpawnDelay;
-                var newEnemy = Instantiate(Enemy);
-                newEnemy.transform.Translate(GetOffscreenPosition());
-            }
+//            CurrentSpawnDelay -= Time.deltaTime;
+//            if (CurrentSpawnDelay <= 0)
+//            {
+//                CurrentSpawnDelay += SpawnDelay;
+//                var newEnemy = Instantiate(Enemy);
+//                newEnemy.transform.Translate(GetOffscreenPosition());
+//            }
         }
 
         private void CreateLevel()
@@ -66,6 +67,12 @@ namespace Assets.Scripts
                     {
                         var exit = Instantiate(Exit);
                         exit.transform.position = tilePosition;
+                    }
+
+                    if (mapTile.Attributes.HasFlag(AttributeType.MobSpawn))
+                    {
+                        var mob = Instantiate(Mob);
+                        mob.transform.position = tilePosition;
                     }
                 }
             }
