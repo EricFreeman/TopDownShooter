@@ -7,11 +7,6 @@ namespace Assets.Scripts
         public GameObject BulletGameObject;
         public GameObject TipGameObject;
 
-        void Update()
-        {
-
-        }
-
         public void Fire()
         {
             if (CanFire())

@@ -25,6 +25,7 @@ namespace Assets.Scripts
                 else
                 {
                     Destroy(gameObject);
+                    EventAggregator.SendMessage(new SpawnBloodMessage { Position = transform.position, SplatterSize = SplatterSize.Medium });
                     EventAggregator.SendMessage(new SpawnGibsMessage { Count = 5, Position = transform.position });
                 }
             }

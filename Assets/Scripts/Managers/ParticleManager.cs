@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Messages;
+using Assets.Scripts.Particles;
 using UnityEngine;
 using UnityEventAggregator;
 
@@ -25,6 +26,7 @@ namespace Assets.Scripts.Managers
         {
             var b = Instantiate(BloodSplat);
             b.transform.position = message.Position;
+            b.GetComponent<BloodSplat>().Spawn(message.SplatterSize);
         }
 
         public void Handle(SpawnGibsMessage message)

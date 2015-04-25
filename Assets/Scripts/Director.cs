@@ -23,17 +23,6 @@ namespace Assets.Scripts
             CreateLevel();
         }
 
-        void Update()
-        {
-//            CurrentSpawnDelay -= Time.deltaTime;
-//            if (CurrentSpawnDelay <= 0)
-//            {
-//                CurrentSpawnDelay += SpawnDelay;
-//                var newEnemy = Instantiate(Enemy);
-//                newEnemy.transform.Translate(GetOffscreenPosition());
-//            }
-        }
-
         private void CreateLevel()
         {
             var map = Generator.Generate(MapSize.Small, (uint)Random.Range(1, 255));
