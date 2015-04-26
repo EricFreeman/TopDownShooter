@@ -39,6 +39,12 @@ namespace Assets.Scripts
                     {
                         var tile = Instantiate(Tile);
                         tile.transform.position = tilePosition;
+
+                        if (Random.Range(0, 5) == 0)
+                        {
+                            var mob = Instantiate(Mob);
+                            mob.transform.position = tilePosition;
+                        }
                     }
                     else if (mapTile.MaterialType == MaterialType.Wall)
                     {
@@ -58,11 +64,11 @@ namespace Assets.Scripts
                         exit.transform.position = tilePosition;
                     }
 
-                    if (mapTile.Attributes.HasFlag(AttributeType.MobSpawn))
-                    {
-                        var mob = Instantiate(Mob);
-                        mob.transform.position = tilePosition;
-                    }
+//                    if (mapTile.Attributes.HasFlag(AttributeType.MobSpawn))
+//                    {
+//                        var mob = Instantiate(Mob);
+//                        mob.transform.position = tilePosition;
+//                    }
                 }
             }
         }
