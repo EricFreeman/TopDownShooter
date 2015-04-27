@@ -10,12 +10,11 @@ namespace Assets.Scripts
         public float Speed = 3f;
         public int Health = 5;
 
-        void OnTriggerEnter2D(Collider2D col)
+        void OnTriggerEnter(Collider col)
         {
             if (col.GetComponent<Bullet>() != null)
             {
                 Health--;
-                Destroy(col.gameObject);
 
                 if (Health > 0)
                 {

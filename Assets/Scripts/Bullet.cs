@@ -10,5 +10,10 @@ namespace Assets.Scripts
         {
             transform.position += (transform.up.normalized * Speed * Time.deltaTime);
         }
+
+        private void OnTriggerEnter(Collider col)
+        {
+            Destroy(gameObject);
+        }
     }
 }
