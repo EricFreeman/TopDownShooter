@@ -8,13 +8,16 @@ namespace Assets.Scripts
     {
         public Player Player;
         public float Speed = 3f;
-        public int Health = 5;
+        public float Health = 5;
 
         void OnTriggerEnter(Collider col)
         {
-            if (col.GetComponent<Bullet>() != null)
+            var bullet = col.GetComponent<Bullet>();
+            if (bullet != null)
             {
-                Health--;
+                Health -= bullet.Damage;
+
+                EventAggregator.SendMessage(new SpawnDamageTextMessage { Position = transform.position, Text = bullet.Damage.ToString("N0") });
 
                 if (Health > 0)
                 {

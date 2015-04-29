@@ -5,6 +5,7 @@ namespace Assets.Scripts
     public class Bullet : MonoBehaviour
     {
         public float Speed;
+        public float Damage = 1;
 
         void Update()
         {
