@@ -29,6 +29,7 @@ namespace Assets.Scripts
                 var bullet = Instantiate(BulletGameObject);
                 bullet.transform.position = TipGameObject.transform.position;
                 bullet.transform.rotation = transform.GetComponentInChildren<SpriteRenderer>().transform.rotation;
+                bullet.GetComponent<Bullet>().Damage = Random.Range(1, 5);
 
                 _lastShot = Time.fixedTime;
 
