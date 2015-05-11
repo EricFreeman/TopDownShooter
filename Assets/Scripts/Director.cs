@@ -28,12 +28,12 @@ namespace Assets.Scripts
         {
             var map = Generator.Generate(MapSize.Small, (uint)Random.Range(1, 255));
 
-            for (var y = 0; y < map.Height; y++)
+            for (var Z = 0; Z < map.Height; Z++)
             {
                 for (var x = 0; x < map.Width; x++)
                 {
-                    var mapTile = map[x, y];
-                    var tilePosition = new Vector3(x, y) * TileSize;
+                    var mapTile = map[x, Z];
+                    var tilePosition = new Vector3(x, 0, Z) * TileSize;
 
                     // tile type
                     if (mapTile.MaterialType == MaterialType.Floor)

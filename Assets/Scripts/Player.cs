@@ -10,7 +10,7 @@ namespace Assets.Scripts
         {
             var frameSpeed = Speed * Time.deltaTime;
 
-            transform.Translate(Input.GetAxisRaw("Horizontal") * frameSpeed, Input.GetAxisRaw("Vertical") * frameSpeed, 0);
+            transform.Translate(Input.GetAxisRaw("Horizontal") * frameSpeed, 0, Input.GetAxisRaw("Vertical") * frameSpeed);
 
             if (Input.GetMouseButton(0))
             {
