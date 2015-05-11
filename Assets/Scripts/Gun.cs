@@ -1,5 +1,4 @@
-﻿using System.ComponentModel;
-using Assets.Scripts.Messages;
+﻿using Assets.Scripts.Messages;
 using UnityEngine;
 using UnityEventAggregator;
 

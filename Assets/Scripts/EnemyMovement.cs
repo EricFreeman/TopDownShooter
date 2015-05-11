@@ -21,7 +21,7 @@ namespace Assets.Scripts
                 if (Vector3.Distance(transform.position, _player.transform.position) < ViewDistance)
                 {
                     RaycastHit info;
-                    var hit = Physics.Linecast(transform.position + new Vector3(0, -.3f, 0), _player.transform.position, out info);
+                    var hit = Physics.Linecast(transform.position + new Vector3(0, .3f, 0), _player.transform.position, out info);
                     if (hit && info.collider.tag == "Player")
                     {
                         return true;

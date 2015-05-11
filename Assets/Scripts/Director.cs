@@ -1,6 +1,4 @@
-﻿using System;
-using Assets.Scripts.Util;
-using Assets.Zombie.Scripts;
+﻿using Assets.Scripts.Util;
 using Dungeon.Generator;
 using UnityEngine;
 using Random = UnityEngine.Random;
