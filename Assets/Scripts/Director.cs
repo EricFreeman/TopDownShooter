@@ -69,7 +69,7 @@ namespace Assets.Scripts
                     if (mapTile.Attributes.HasFlag(AttributeType.Entry))
                     {
                         var player = FindObjectOfType<Player>();
-                        player.transform.position = tilePosition;
+                        player.transform.position = tilePosition + new Vector3(0, .5f, 0);
                     }
                     else if (mapTile.Attributes.HasFlag(AttributeType.Exit))
                     {

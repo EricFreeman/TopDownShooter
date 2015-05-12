@@ -16,8 +16,8 @@ namespace Assets.Scripts.Particles
             for (var i = 0; i < amount; i++)
             {
                 var spreadX = Random.Range(-.5f * extraBloodModifier, .5f * extraBloodModifier);
-                var spreadY = Random.Range(-.5f * extraBloodModifier, .5f * extraBloodModifier);
-                var spead = new Vector3(spreadX, spreadY) + transform.position;
+                var spreadZ = Random.Range(-.5f * extraBloodModifier, .5f * extraBloodModifier);
+                var spead = new Vector3(spreadX, 0, spreadZ) + transform.position;
                 var size = Random.Range(.5f * extraBloodModifier, 2f);
                 var opacity = Random.Range(.25f, 1f);
 
