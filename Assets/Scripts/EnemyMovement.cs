@@ -13,6 +13,7 @@ namespace Assets.Scripts
 
         public EnemyState State = EnemyState.Patrolling;
         private Vector3 _lastKnownLocation;
+        private Seeker _seeker;
 
         private bool CanSeePlayer
         {
@@ -35,6 +36,7 @@ namespace Assets.Scripts
         void Start()
         {
             _player = FindObjectOfType<Player>().gameObject;
+            _seeker = GetComponent<Seeker>();
         }
 
         void FixedUpdate()
@@ -66,11 +68,13 @@ namespace Assets.Scripts
             LookTowardsPosition(_lastKnownLocation);
         }
 
+        private bool onlyOnce;
         private void AlertState()
         {
             if (!CanSeePlayer)
             {
-                transform.position = Vector3.MoveTowards(transform.position, _lastKnownLocation, MoveSpeed * Time.deltaTime);
+                //transform.position = Vector3.MoveTowards(transform.position, _lastKnownLocation, MoveSpeed * Time.deltaTime);
+                _seeker.StartPath(transform.position, _lastKnownLocation);
 
                 if (transform.position == _lastKnownLocation)
                     State = EnemyState.Searching;
@@ -78,7 +82,10 @@ namespace Assets.Scripts
             else
             {
                 _lastKnownLocation = _player.transform.position;
-                transform.position = Vector3.MoveTowards(transform.position, _player.transform.position, MoveSpeed * Time.deltaTime);
+//                transform.position = Vector3.MoveTowards(transform.position, _player.transform.position, MoveSpeed * Time.deltaTime);
+                if(!onlyOnce)
+                _seeker.StartPath(transform.position, _player.transform.position);
+                onlyOnce = true;
 
                 LookTowardsPosition(_player.transform.position);
             }
