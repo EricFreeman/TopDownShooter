@@ -10,6 +10,8 @@ namespace Assets.Scripts
         public float Speed = 3f;
         public float Health = 5;
 
+        public GameObject ExplosionGameObject;
+
         void OnTriggerEnter(Collider col)
         {
             var bullet = col.GetComponent<Bullet>();
