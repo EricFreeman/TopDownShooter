@@ -15,6 +15,7 @@ namespace Assets.Scripts
         public GameObject Wall;
         public GameObject Exit;
         public GameObject Mob;
+        public GameObject AmmoCrateGameObject;
         public GameObject BarrelGameObject;
         public float TileSize = 8;
 
@@ -41,16 +42,21 @@ namespace Assets.Scripts
                         var tile = Instantiate(Tile);
                         tile.transform.position = tilePosition;
 
-                        var random = Random.Range(0, 5);
-                        if (random == 0)
+                        var random = Random.Range(0, 10);
+                        if (random <= 1)
                         {
                             var mob = Instantiate(Mob);
                             mob.transform.position = tilePosition;
                         }
-                        else if (random == 1)
+                        else if (random <= 3)
                         {
                             var barrel = Instantiate(BarrelGameObject);
                             barrel.transform.position = tilePosition;
+                        }
+                        else if (random <= 4)
+                        {
+                            var ammoCrate = Instantiate(AmmoCrateGameObject);
+                            ammoCrate.transform.position = tilePosition;
                         }
                     }
                     else if (mapTile.MaterialType == MaterialType.Wall)

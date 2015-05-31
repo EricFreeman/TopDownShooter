@@ -1,10 +1,13 @@
 ﻿using System.ComponentModel;
+using Assets.Scripts.Messages;
 using UnityEngine;
+using UnityEventAggregator;
 
 namespace Assets.Scripts
 {
-    public class Gun : MonoBehaviour
+    public class Gun : MonoBehaviour, IListener<GainAmmunitionMessage>
     {
+        public int Ammunition;
         public GameObject BulletGameObject;
         public GameObject TipGameObject;
         public GameObject MuzzleFlareLight;
@@ -16,12 +19,14 @@ namespace Assets.Scripts
 
         void Start()
         {
+            this.Register<GainAmmunitionMessage>();
+
             if (MuzzleFlareLight != null)
             {
                 _muzzleFlare = MuzzleFlareLight.GetComponent<Light>();
             }
         }
-
+        
         public void Fire()
         {
             if (CanFire())
@@ -33,6 +38,8 @@ namespace Assets.Scripts
 
                 _lastShot = Time.fixedTime;
 
+                Ammunition--;
+
                 if (_muzzleFlare != null)
                 {
                     _muzzleFlare.intensity = 3;
@@ -42,7 +49,15 @@ namespace Assets.Scripts
 
         private bool CanFire()
         {
-            return Time.fixedTime - _lastShot > ShotDelay;
+            var ammunitionIsNotEmpty = Ammunition > 0;
+            var itHasBeenLongEnoughSinceTheLastShot = Time.fixedTime - _lastShot > ShotDelay;
+            
+            return ammunitionIsNotEmpty && itHasBeenLongEnoughSinceTheLastShot;
+        }
+
+        public void Handle(GainAmmunitionMessage message)
+        {
+            Ammunition += message.Quantity;
         }
     }
 }
