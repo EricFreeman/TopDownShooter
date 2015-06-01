@@ -8,8 +8,6 @@ namespace Assets.Scripts
     {
         private float _health;
 
-        public GameObject ExplosionGameObject;
-
         void Start()
         {
             _health = 5f;
