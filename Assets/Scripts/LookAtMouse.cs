@@ -6,7 +6,7 @@ namespace Assets.Scripts
     {
         void FixedUpdate()
         {
-            var playerPlane = new Plane(Vector3.forward, transform.position);
+            var playerPlane = new Plane(Vector3.up, transform.position);
             var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
             float hitdist;
@@ -14,9 +14,9 @@ namespace Assets.Scripts
             {
                 var targetPoint = ray.GetPoint(hitdist);
                 
-                var newRotation = Quaternion.LookRotation(transform.position - targetPoint, Vector3.forward);
+                var newRotation = Quaternion.LookRotation(targetPoint - transform.position, Vector3.up);
                 newRotation.x = 0;
-                newRotation.y = 0;
+                newRotation.z = 0;
                 transform.rotation = newRotation;
             }
         }

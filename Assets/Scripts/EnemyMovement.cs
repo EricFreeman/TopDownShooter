@@ -21,7 +21,7 @@ namespace Assets.Scripts
                 if (Vector3.Distance(transform.position, _player.transform.position) < ViewDistance)
                 {
                     RaycastHit info;
-                    var hit = Physics.Linecast(transform.position + new Vector3(0, 0, -.3f), _player.transform.position, out info);
+                    var hit = Physics.Linecast(transform.position + new Vector3(0, -.3f, 0), _player.transform.position, out info);
                     if (hit && info.collider.tag == "Player")
                     {
                         return true;
@@ -86,9 +86,9 @@ namespace Assets.Scripts
 
         private void LookTowardsPosition(Vector3 position)
         {
-            var targetRotationRadians = Math.Atan2(position.y - transform.position.y, position.x - transform.position.x);
-            var targetRotationDegrees = targetRotationRadians*(180.0/Math.PI) - 90;
-            transform.localEulerAngles = new Vector3(0, 0, (float) targetRotationDegrees);
+            var targetRotationRadians = Math.Atan2(position.x - transform.position.x, position.z - transform.position.z);
+            var targetRotationDegrees = targetRotationRadians*(180.0/Math.PI);
+            transform.localEulerAngles = new Vector3(0, (float)targetRotationDegrees, 0);
         }
     }
 

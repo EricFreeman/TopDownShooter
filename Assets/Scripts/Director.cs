@@ -1,4 +1,6 @@
-﻿using Assets.Scripts.Util;
+﻿using System;
+using Assets.Scripts.Util;
+using Assets.Zombie.Scripts;
 using Dungeon.Generator;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -29,12 +31,12 @@ namespace Assets.Scripts
         {
             var map = Generator.Generate(MapSize.Small, (uint)Random.Range(1, 255));
 
-            for (var y = 0; y < map.Height; y++)
+            for (var z = 0; z < map.Height; z++)
             {
                 for (var x = 0; x < map.Width; x++)
                 {
-                    var mapTile = map[x, y];
-                    var tilePosition = new Vector3(x, y) * TileSize;
+                    var mapTile = map[x, z];
+                    var tilePosition = new Vector3(x, 0, z) * TileSize;
 
                     // tile type
                     if (mapTile.MaterialType == MaterialType.Floor)
@@ -76,12 +78,6 @@ namespace Assets.Scripts
                         var exit = Instantiate(Exit);
                         exit.transform.position = tilePosition;
                     }
-
-//                    if (mapTile.Attributes.HasFlag(AttributeType.MobSpawn))
-//                    {
-//                        var mob = Instantiate(Mob);
-//                        mob.transform.position = tilePosition;
-//                    }
                 }
             }
         }

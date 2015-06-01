@@ -23,7 +23,8 @@ namespace Assets.Scripts
                 Health -= bullet.Damage;
                 if (Health <= 0)
                 {
-                    EventAggregator.SendMessage(new SpawnExplosionMessage { Position = transform.position });
+                    var position = transform.position;
+                    EventAggregator.SendMessage(new SpawnExplosionMessage { Position = position });
                     Destroy(gameObject);
                 }
             }
