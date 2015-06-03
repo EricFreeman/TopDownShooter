@@ -3,7 +3,6 @@
 namespace Assets.Zombie.Scripts
 {
     [RequireComponent(typeof(Rigidbody))]
-    [RequireComponent(typeof(CapsuleCollider))]
     [RequireComponent(typeof(Animator))]
     public class ZombieCharacter : MonoBehaviour
     {
@@ -30,14 +29,12 @@ namespace Assets.Zombie.Scripts
         float m_TurnAmount;
         float m_ForwardAmount;
         Vector3 m_GroundNormal;
-        CapsuleCollider m_Capsule;
 
 
         void Start()
         {
             m_Animator = GetComponent<Animator>();
             m_Rigidbody = GetComponent<Rigidbody>();
-            m_Capsule = GetComponent<CapsuleCollider>();
 
             m_Rigidbody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
         }

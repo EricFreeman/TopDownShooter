@@ -78,8 +78,19 @@ namespace Assets.Scripts
             else
             {
                 _lastKnownLocation = _player.transform.position;
-                transform.position = Vector3.MoveTowards(transform.position, _player.transform.position, MoveSpeed * Time.deltaTime);
+                
+                var move = _player.transform.position;
+                var speed = MoveSpeed * Time.deltaTime;
+                transform.position = Vector3.MoveTowards(transform.position, move, speed);
 
+                var animator = GetComponent<Animator>();
+                
+                var forwardAmount = move.z;                
+                animator.SetFloat("Forward", forwardAmount, 0.1f, speed);
+                
+                var turnAmount = Mathf.Atan2(move.x, move.z);
+                animator.SetFloat("Turn", turnAmount, 0.1f, speed);
+                
                 LookTowardsPosition(_player.transform.position);
             }
         }
