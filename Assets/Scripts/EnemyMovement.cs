@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace Assets.Scripts
 {
+    [RequireComponent(typeof(Animator))]
     public class EnemyMovement : MonoBehaviour 
     {
         private GameObject _player;
