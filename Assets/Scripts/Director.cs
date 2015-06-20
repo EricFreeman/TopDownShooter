@@ -52,6 +52,7 @@ namespace Assets.Scripts
                         {
                             var barrel = Instantiate(BarrelGameObject);
                             barrel.transform.position = tilePosition;
+                            barrel.transform.position.Set(tilePosition.x, barrel.transform.position.y + 5, tilePosition.z);
                         }
                         else if (random <= 4)
                         {

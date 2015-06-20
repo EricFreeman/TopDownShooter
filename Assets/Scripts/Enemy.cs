@@ -6,15 +6,12 @@ namespace Assets.Scripts
 {
     public class Enemy : MonoBehaviour
     {
-        public Player Player;
         public float Speed = 3f;
         public float Health = 5;
 
-        public GameObject ExplosionGameObject;
-
-        void OnTriggerEnter(Collider col)
+        void OnCollisionEnter(Collision collision)
         {
-            var bullet = col.GetComponent<Bullet>();
+            var bullet = collision.gameObject.GetComponent<Bullet>();
             if (bullet != null)
             {
                 Health -= bullet.Damage;

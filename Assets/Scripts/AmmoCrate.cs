@@ -13,9 +13,11 @@ namespace Assets.Scripts
             _health = 5f;
         }
 
-        void OnTriggerEnter(Collider col)
+        void OnCollisionEnter(Collision collision)
         {
-            var bullet = col.GetComponent<Bullet>();
+            Debug.Log(string.Format("Ammo crate was struck by {0}", collision.gameObject.name));
+
+            var bullet = collision.gameObject.GetComponent<Bullet>();
             if (bullet != null)
             {
                 _health -= bullet.Damage;

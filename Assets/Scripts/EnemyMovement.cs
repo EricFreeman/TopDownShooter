@@ -10,7 +10,6 @@ namespace Assets.Scripts
         public float FieldOfView = 60f;
         public float ViewDistance = 10;
         public float MoveSpeed = 2f;
-        public float TurnSpeed = 6f;
 
         public EnemyState State = EnemyState.Patrolling;
         private Vector3 _lastKnownLocation;
@@ -88,9 +87,6 @@ namespace Assets.Scripts
                 
                 var forwardAmount = move.z;                
                 animator.SetFloat("Forward", forwardAmount, 0.1f, speed);
-                
-                var turnAmount = Mathf.Atan2(move.x, move.z);
-                animator.SetFloat("Turn", turnAmount, 0.1f, speed);
                 
                 LookTowardsPosition(_player.transform.position);
             }

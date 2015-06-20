@@ -15,9 +15,9 @@ namespace Assets.Scripts
             Health = 10f;
         }
 
-        void OnTriggerEnter(Collider col)
+        void OnCollisionEnter(Collision collision)
         {
-            var bullet = col.GetComponent<Bullet>();
+            var bullet = collision.gameObject.GetComponent<Bullet>();
             if (bullet != null)
             {
                 Health -= bullet.Damage;
