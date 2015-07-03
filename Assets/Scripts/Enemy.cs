@@ -22,10 +22,12 @@ namespace Assets.Scripts
                         Text = bullet.Damage.ToString("N0")
                     });
 
+                var zombieBloodColor = new Color(0.25f, 0.31f, 0.18f, 1f);
+
                 if (Health > 0)
                 {
                     EventAggregator.SendMessage(new SpawnGibsMessage {Count = 1, Position = transform.position});
-                    EventAggregator.SendMessage(new SpawnBloodMessage {Position = transform.position});
+                    EventAggregator.SendMessage(new SpawnBloodMessage { Position = transform.position, Color = zombieBloodColor });
                 }
                 else
                 {
@@ -33,7 +35,8 @@ namespace Assets.Scripts
                     EventAggregator.SendMessage(new SpawnBloodMessage
                         {
                             Position = transform.position,
-                            SplatterSize = SplatterSize.Medium
+                            SplatterSize = SplatterSize.Medium,
+                            Color = zombieBloodColor
                         });
                     EventAggregator.SendMessage(new SpawnGibsMessage {Count = 5, Position = transform.position});
                 }

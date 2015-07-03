@@ -51,8 +51,9 @@ namespace Assets.Scripts
                 Text = message.Collision.relativeVelocity.ToString("N0")
             });
 
+
             EventAggregator.SendMessage(new SpawnGibsMessage { Count = 1, Position = transform.position });
-            EventAggregator.SendMessage(new SpawnBloodMessage { Position = transform.position });
+            EventAggregator.SendMessage(new SpawnBloodMessage { Position = transform.position, Color = new Color(.67f, 0f, 0f, 1f) });
         }
     }
 }

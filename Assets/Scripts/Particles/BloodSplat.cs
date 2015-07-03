@@ -8,7 +8,7 @@ namespace Assets.Scripts.Particles
     {
         public GameObject BloodGameObject;
 
-        public void Spawn(SplatterSize splatterSize)
+        public void Spawn(SplatterSize splatterSize, Color color)
         {
             var extraBloodModifier = (int)splatterSize + 1;
             var amount = Random.Range(7 * extraBloodModifier, 15 * extraBloodModifier);
@@ -22,7 +22,7 @@ namespace Assets.Scripts.Particles
                 var opacity = Random.Range(.25f, 1f);
 
                 var b = Instantiate(BloodGameObject);
-                b.GetComponent<BloodPool>().Setup(spead);
+                b.GetComponent<BloodPool>().Setup(spead, color);
                 b.transform.position = transform.position;
                 b.transform.localScale = new Vector3(size, size, size);
                 b.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, opacity);
