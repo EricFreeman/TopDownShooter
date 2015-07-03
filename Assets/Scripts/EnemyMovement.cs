@@ -6,13 +6,59 @@ namespace Assets.Scripts
     [RequireComponent(typeof(Animator))]
     public class EnemyMovement : MonoBehaviour 
     {
-        private GameObject _player;
         public float FieldOfView = 60f;
         public float ViewDistance = 10;
         public float MoveSpeed = 2f;
-
+        public float MeleeWeaponRange = 2.5f;
         public EnemyState State = EnemyState.Patrolling;
+
+        private GameObject _player;
         private Vector3 _lastKnownLocation;
+
+        void Start()
+        {
+            _player = FindObjectOfType<Player>().gameObject;
+        }
+
+        void FixedUpdate()
+        {
+            switch (State)
+            {
+                case EnemyState.Attacking:
+                    AttackingState();
+                    break;
+                case EnemyState.Idle:
+                    if (CanSeePlayer) State = EnemyState.Detect;
+                    break;
+                case EnemyState.Patrolling:
+                    if (CanSeePlayer) State = EnemyState.Detect;
+                    break;
+                case EnemyState.Searching:
+                    SearchState();
+                    break;
+                case EnemyState.Detect:
+                    AlertState();
+                    break;
+            }
+        }
+
+        private void AttackingState()
+        {
+            var animator = GetComponent<Animator>();
+            var playerPosition = _player.transform.position;
+
+            var distance = Vector3.Distance(playerPosition, transform.position);
+            if (distance <= MeleeWeaponRange)
+            {
+                animator.SetBool("IsAttacking", true);
+                animator.SetFloat("Forward", 0f, 0.1f, 0.5f);
+            }
+            else
+            {
+                animator.SetBool("IsAttacking", false);
+                State = EnemyState.Detect;
+            }
+        }
 
         private bool CanSeePlayer
         {
@@ -29,30 +75,6 @@ namespace Assets.Scripts
                 }
 
                 return false;
-            }
-        }
-
-        void Start()
-        {
-            _player = FindObjectOfType<Player>().gameObject;
-        }
-
-        void FixedUpdate()
-        {
-            switch (State)
-            {
-                case EnemyState.Idle:
-                    if (CanSeePlayer) State = EnemyState.Detect;
-                    break;
-                case EnemyState.Patrolling:
-                    if (CanSeePlayer) State = EnemyState.Detect;
-                    break;
-                case EnemyState.Searching:
-                    SearchState();
-                    break;
-                case EnemyState.Detect:
-                    AlertState();
-                    break;
             }
         }
 
@@ -78,18 +100,32 @@ namespace Assets.Scripts
             else
             {
                 _lastKnownLocation = _player.transform.position;
-                
-                var move = _player.transform.position;
-                var speed = MoveSpeed * Time.deltaTime;
-                transform.position = Vector3.MoveTowards(transform.position, move, speed);
 
-                var animator = GetComponent<Animator>();
-                
-                var forwardAmount = move.z;                
-                animator.SetFloat("Forward", forwardAmount, 0.1f, speed);
-                
+                var playerPosition = _player.transform.position;
+
+                var distance = Vector3.Distance(playerPosition, transform.position);
+                if (distance <= MeleeWeaponRange)
+                {
+                    State = EnemyState.Attacking;
+                }
+                else
+                {
+                    MoveCloserToDestination(playerPosition);
+                }
+
                 LookTowardsPosition(_player.transform.position);
             }
+        }
+
+        private void MoveCloserToDestination(Vector3 destination)
+        {
+            var speed = MoveSpeed * Time.deltaTime;
+            transform.position = Vector3.MoveTowards(transform.position, destination, speed);
+
+            var animator = GetComponent<Animator>();
+
+            var forwardAmount = destination.z;
+            animator.SetFloat("Forward", forwardAmount, 0.1f, speed);
         }
 
         private void LookTowardsPosition(Vector3 position)
@@ -106,6 +142,7 @@ namespace Assets.Scripts
         Patrolling,
         Searching,
         Detect,
-        Dead
+        Dead,
+        Attacking
     }
 }
