@@ -15,7 +15,7 @@ namespace Assets.Scripts
 
         void OnCollisionEnter(Collision collision)
         {
-            Debug.Log(string.Format("Ammo crate was struck by {0}", collision.gameObject.name));
+            //Debug.Log(string.Format("Ammo crate was struck by {0}", collision.gameObject.name));
 
             var bullet = collision.gameObject.GetComponent<Bullet>();
             if (bullet != null)

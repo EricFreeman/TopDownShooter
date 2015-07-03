@@ -1,10 +1,22 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.Messages;
+using UnityEngine;
+using UnityEventAggregator;
 
 namespace Assets.Scripts
 {
-    public class Player : MonoBehaviour
+    public class Player : MonoBehaviour, IListener<AcceptMeleeHitMessage>
     {
         public float Speed;
+
+        void Start()
+        {
+            this.Register<AcceptMeleeHitMessage>();
+        }
+
+        void OnDestroy()
+        {
+            this.UnRegister<AcceptMeleeHitMessage>();
+        }
 
         void Update()
         {
@@ -29,6 +41,18 @@ namespace Assets.Scripts
                 var gun = GetComponent<Gun>();
                 if (gun != null) gun.Fire();
             }
+        }
+
+        public void Handle(AcceptMeleeHitMessage message)
+        {
+            EventAggregator.SendMessage(new SpawnDamageTextMessage
+            {
+                Position = transform.position,
+                Text = message.Collision.relativeVelocity.ToString("N0")
+            });
+
+            EventAggregator.SendMessage(new SpawnGibsMessage { Count = 1, Position = transform.position });
+            EventAggregator.SendMessage(new SpawnBloodMessage { Position = transform.position });
         }
     }
 }
