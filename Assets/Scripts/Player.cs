@@ -34,7 +34,7 @@ namespace Assets.Scripts
                 var animator = GetComponentInChildren<Animator>();
                 animator.SetFloat("speed", 2f);
             }
-            transform.Translate(horizontalSpeed, verticalSpeed, 0);
+            transform.Translate(horizontalSpeed, 0, verticalSpeed);
 
             if (Input.GetMouseButton(0))
             {

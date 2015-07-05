@@ -12,7 +12,6 @@ namespace Assets.Scripts
         {
             if (collision.collider.name == "Player")
             {
-                Debug.Log("Melee collision!");
                 EventAggregator.SendMessage(new AcceptMeleeHitMessage {Collision = collision});
             }
         }
