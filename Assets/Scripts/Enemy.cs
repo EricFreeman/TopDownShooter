@@ -21,6 +21,8 @@ namespace Assets.Scripts
                 var bullet = collision.gameObject.GetComponent<Bullet>();
                 if (bullet != null)
                 {
+                    var enemyRigidbody = GetComponent<Rigidbody>();
+
                     Health -= bullet.Damage;
 
                     EventAggregator.SendMessage(new SpawnDamageTextMessage
@@ -28,6 +30,8 @@ namespace Assets.Scripts
                             Position = transform.position,
                             Text = bullet.Damage.ToString("N0")
                         });
+
+                    enemyRigidbody.AddForceAtPosition(transform.forward * -100f, collision.transform.position);
 
                     var zombieBloodColor = new Color(0.25f, 0.31f, 0.18f, 1f);
 
@@ -48,8 +52,6 @@ namespace Assets.Scripts
                         animator.SetBool("IsDead", true);
 
                         enemyMovement.State = EnemyState.Dead;
-
-                        var enemyRigidbody = GetComponent<Rigidbody>();
                         enemyRigidbody.isKinematic = true;
 
                         var meleeWeapons = GetComponentsInChildren<MeleeWeapon>();
