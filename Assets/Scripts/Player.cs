@@ -4,6 +4,7 @@ using UnityEventAggregator;
 
 namespace Assets.Scripts
 {
+    [RequireComponent(typeof(Animator))]
     public class Player : MonoBehaviour, IListener<AcceptMeleeHitMessage>
     {
         public float Speed;
@@ -11,6 +12,8 @@ namespace Assets.Scripts
         void Start()
         {
             this.Register<AcceptMeleeHitMessage>();
+            var animator = GetComponentInChildren<Animator>();
+            animator.SetBool("grounded", true);
         }
 
         void OnDestroy()
@@ -18,22 +21,21 @@ namespace Assets.Scripts
             this.UnRegister<AcceptMeleeHitMessage>();
         }
 
-        void Update()
+        void FixedUpdate()
         {
             var frameSpeed = Speed * Time.deltaTime;
 
             var horizontalSpeed = Input.GetAxisRaw("Horizontal")*frameSpeed;
-            var verticalSpeed = Input.GetAxisRaw("Vertical")*frameSpeed;
-            if (horizontalSpeed < 0.1f && verticalSpeed < 0.1f)
+            var verticalSpeed = Input.GetAxisRaw("Vertical") * frameSpeed;
+            var animator = GetComponentInChildren<Animator>();
+
+
+            var move = verticalSpeed * Vector3.forward + horizontalSpeed * Vector3.right;
+            if (move.magnitude > 1f)
             {
-                //var animator = GetComponentInChildren<Animator>();
-                //animator.SetFloat("speed", 0f);
+                move.Normalize();
             }
-            else
-            {
-                var animator = GetComponentInChildren<Animator>();
-                animator.SetFloat("speed", 2f);
-            }
+            animator.SetFloat("speed", move.magnitude * 100f);
             transform.Translate(horizontalSpeed, 0, verticalSpeed);
 
             if (Input.GetMouseButton(0))
