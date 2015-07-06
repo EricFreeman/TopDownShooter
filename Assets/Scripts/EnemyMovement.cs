@@ -24,6 +24,8 @@ namespace Assets.Scripts
         {
             switch (State)
             {
+                case EnemyState.Dead:
+                    break;
                 case EnemyState.Attacking:
                     AttackingState();
                     break;
