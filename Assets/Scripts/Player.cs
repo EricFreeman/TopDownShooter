@@ -12,8 +12,6 @@ namespace Assets.Scripts
         void Start()
         {
             this.Register<AcceptMeleeHitMessage>();
-            var animator = GetComponentInChildren<Animator>();
-            animator.SetBool("grounded", true);
         }
 
         void OnDestroy()

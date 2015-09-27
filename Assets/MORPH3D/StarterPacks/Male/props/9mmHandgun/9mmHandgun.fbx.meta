@@ -1,0 +1,230 @@
+fileFormatVersion: 2
+guid: 67178177cf1c2cc4a87b6585e90e31e3
+timeCreated: 1441048161
+licenseType: Store
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: 9mm Pistol
+    100002: //RootNode
+    100004: abdomen
+    100006: abdomen2
+    100008: chest
+    100010: DZBGDALY9MM_38369.Shape_LOD0
+    100012: DZBGDALY9MM_38369.Shape_LOD1
+    100014: Genesis 2 Male
+    100016: hip
+    100018: rCollar
+    100020: rForeArm
+    100022: rHand
+    100024: rShldr
+    400000: 9mm Pistol
+    400002: //RootNode
+    400004: abdomen
+    400006: abdomen2
+    400008: chest
+    400010: DZBGDALY9MM_38369.Shape_LOD0
+    400012: DZBGDALY9MM_38369.Shape_LOD1
+    400014: Genesis 2 Male
+    400016: hip
+    400018: rCollar
+    400020: rForeArm
+    400022: rHand
+    400024: rShldr
+    2300000: DZBGDALY9MM_38369.Shape_LOD0
+    2300002: DZBGDALY9MM_38369.Shape_LOD1
+    3300000: DZBGDALY9MM_38369.Shape_LOD0
+    3300002: DZBGDALY9MM_38369.Shape_LOD1
+    4300000: DZBGDALY9MM_38369.Shape_LOD0
+    4300002: DZBGDALY9MM_38369.Shape_LOD1
+    7400000: Take 001
+    9500000: //RootNode
+    11400000: 9mm Pistol
+    11400002: 9mm Pistol
+    11400004: DZBGDALY9MM_38369.Shape_LOD0
+    11400006: DZBGDALY9MM_38369.Shape_LOD1
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 3
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages:
+    - .25
+    - .00999999978
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human:
+    - boneName: abdomen
+      humanName: Hips
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: abdomen2
+      humanName: Spine
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: chest
+      humanName: Chest
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: rCollar
+      humanName: RightShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: rShldr
+      humanName: RightUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: rForeArm
+      humanName: RightLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: rHand
+      humanName: RightHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    skeleton:
+    - name: 9mmHandgun(Clone)
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Genesis 2 Male
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: hip
+      position: {x: -0, y: 1.03684795, z: -.00102824101}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: abdomen
+      position: {x: -0, y: -.0117209619, z: -.0145408092}
+      rotation: {x: 3.46944695e-18, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: abdomen2
+      position: {x: -0, y: .101681978, z: .00087184069}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: chest
+      position: {x: -0, y: .133780971, z: -.0320349671}
+      rotation: {x: -4.33680869e-19, y: 0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: rCollar
+      position: {x: .0178918, y: .197195053, z: .0472971983}
+      rotation: {x: -9.37724099e-19, y: -.0159483477, z: -.000105167826, w: .999872863}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: rShldr
+      position: {x: .157706305, y: .000394897448, z: -.0598913804}
+      rotation: {x: .000302352535, y: .0291727576, z: .00966787525, w: .999527574}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: rForeArm
+      position: {x: .281092167, y: -.0125099178, z: .0289577879}
+      rotation: {x: .00339042, y: .171448469, z: -.00413762685, w: .98517859}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: rHand
+      position: {x: .222490609, y: -.00188796991, z: .104079835}
+      rotation: {x: -.0136804618, y: .000198440233, z: .0292482115, w: .999478579}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: 9mm Pistol
+      position: {x: .05219841, y: -.0161560047, z: .0486677177}
+      rotation: {x: .327313364, y: .407239765, z: .587714851, w: .617748439}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: DZBGDALY9MM_38369.Shape_LOD0
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: DZBGDALY9MM_38369.Shape_LOD1
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 3
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
